@@ -6,204 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jack Yang</title>
     <style>
+        :root {
+            --bg: #ffffff;
+            --text: #111111;
+            --muted: #666666;
+            --border: #e9e9e9;
+            --link: #111111;
+            --link-hover: #444444;
+            --selection-bg: #ffeb3b;
+            --selection-text: #000000;
+        }
+
         body {
-            font-family: 'Times New Roman', serif;
-            background-color: #ffffff;
-            color: #000000;
+            font-family: ui-serif, "Times New Roman", Times, serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
-            padding: 20px;
-            line-height: 1.4;
-            zoom: 0.9;
+            padding: 24px;
+            line-height: 1.55;
+            font-size: clamp(16px, 1.6vw, 18px);
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Dark mode styles */
-        body.dark-mode {
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-        }
-
-        body.dark-mode h1,
-        body.dark-mode h2 {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .ascii-art {
-            color: #e0e0e0;
-            background-color: transparent;
-        }
-
-        body.dark-mode .nav a {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .nav a:hover {
-            color: #ffffff;
-        }
-
-        body.dark-mode .project {
-            background-color: transparent;
-            border: none;
-        }
-
-        body.dark-mode .about-bio-layout {
-            background-color: transparent;
-        }
-
-        body.dark-mode .profile-image {
-            background-color: transparent;
-        }
-
-        body.dark-mode .profile-image img {
-            box-shadow: inset 0 0 0 1px #444;
-        }
-
-        body.dark-mode .project h3 {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .project h3 a {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .project h3 a:hover {
-            color: #ffffff;
-        }
-
-        body.dark-mode .contact-info a {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .contact-info a:hover {
-            color: #ffffff;
-        }
-
-        body.dark-mode .bio-text a {
-            color: #888;
-        }
-
-        body.dark-mode .bio-text a:hover {
-            color: #aaa;
-        }
-
-        body.dark-mode .profile-image p {
-            color: #888;
-        }
-
-        body.dark-mode .footer {
-            color: #888;
-        }
-
-        body.dark-mode .footer a {
-            color: #888;
-        }
-
-        body.dark-mode .footer a:hover {
-            color: #ffffff;
-        }
-
         .footer a {
-            color: #000000;
+            color: var(--link);
         }
 
         .footer a:hover {
-            color: #666666;
+            color: var(--link-hover);
         }
 
         .bio-text a {
-            color: #666;
+            color: var(--muted);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
         }
 
         .bio-text a:hover {
-            color: #333;
+            color: var(--text);
         }
 
         .profile-image p {
-            color: #666;
+            color: var(--muted);
             font-size: 1em;
             margin-top: 8px;
             margin-bottom: 0;
             line-height: 1.4;
         }
 
-        /* Theme toggle button */
-        .theme-toggle {
-            background: transparent;
-            border: none;
-            border-radius: 6px;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 15px;
-            vertical-align: middle;
-            color: #999;
-        }
-
-        .theme-toggle:hover {
-            background: #f5f5f5;
-            color: #333;
-        }
-
-        .theme-toggle.active {
-            background: #e8e8e8;
-            color: #000;
-        }
-
-        body.dark-mode .theme-toggle {
-            color: #666;
-        }
-
-        body.dark-mode .theme-toggle:hover {
-            background: #333;
-            color: #ccc;
-        }
-
-        body.dark-mode .theme-toggle.active {
-            background: #444;
-            color: #fff;
-        }
-
         ::selection {
-            background-color: #ffeb3b;
-            color: #000000;
+            background-color: var(--selection-bg);
+            color: var(--selection-text);
         }
 
         ::-moz-selection {
-            background-color: #ffeb3b;
-            color: #000000;
+            background-color: var(--selection-bg);
+            color: var(--selection-text);
         }
 
 
         .container {
-            max-width: 800px;
+            max-width: 760px;
             margin: 0 auto;
         }
 
         h1 {
-            color: #000000;
+            color: var(--text);
             text-align: left;
-            margin-bottom: 20px;
-            font-size: 1.5em;
+            margin-bottom: 18px;
+            font-size: 1.6em;
             font-weight: normal;
+            letter-spacing: -0.01em;
         }
 
         h2 {
-            color: #000000;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.2em;
+            color: var(--text);
+            margin-top: 44px;
+            margin-bottom: 14px;
+            font-size: 1.15em;
             font-weight: normal;
+        }
+
+        /* reduce top whitespace since nav/header removed */
+        .section:first-of-type h2 {
+            margin-top: 18px;
         }
 
         .ascii-art {
             text-align: left;
             font-size: 10px;
-            color: #000000;
+            color: var(--text);
             margin: 10px 0;
             padding: 15px 0 0 0;
         }
@@ -213,30 +105,13 @@
             padding: 0;
         }
 
-        .nav {
-            margin: 20px 0;
-        }
-
-        .nav a {
-            color: #000000;
-            text-decoration: underline;
-            margin-right: 20px;
-        }
-
-        .nav a:has(svg) {
-            text-decoration: none;
-        }
-
-        .nav a:hover {
-            color: #666666;
-        }
-
         .section {
             margin: 0;
         }
 
         .project {
-            margin: 20px 0;
+            margin: 14px 0;
+            padding: 2px 0;
         }
 
         .section>div:not(.about-bio-layout) {
@@ -247,50 +122,31 @@
             margin-top: 20px !important;
         }
 
-        #projects .project:first-child {
-            margin-top: 20px !important;
-        }
-
-        #events .project:first-child {
-            margin-top: 20px !important;
-        }
-
         .project h3 {
-            color: #000000;
+            color: var(--text);
             margin-top: 0;
             margin-bottom: 0;
             font-size: 1em;
             font-weight: normal;
+            line-height: 1.4;
         }
 
         .project h3 a {
             color: inherit;
             text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
         }
 
         .project h3 a:hover {
-            color: #666666;
+            color: var(--link-hover);
         }
 
         .project p {
             margin-top: 2px;
             margin-bottom: 5px;
-            line-height: 1.4;
-        }
-
-        #events ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin: 20px 0;
-        }
-
-        #events li {
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-
-        body.dark-mode #events li {
-            color: #e0e0e0;
+            line-height: 1.5;
+            color: var(--muted);
         }
 
 
@@ -299,12 +155,12 @@
         }
 
         .contact-info a {
-            color: #000000;
+            color: var(--link);
             text-decoration: underline;
         }
 
         .contact-info a:hover {
-            color: #666666;
+            color: var(--link-hover);
         }
 
         .about-bio-layout {
@@ -316,7 +172,7 @@
 
         .bio-text {
             flex: 2;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .bio-text p {
@@ -343,21 +199,23 @@
             height: 290px;
             object-fit: cover;
             object-position: center;
+            border-radius: 10px;
+            box-shadow: inset 0 0 0 1px var(--border);
         }
 
         .footer {
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #999999;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
             font-size: 0.9em;
         }
 
         pre {
             padding: 20px;
             overflow-x: auto;
-            color: #666666;
+            color: var(--muted);
             font-family: 'Courier New', monospace;
             font-size: 0.8em;
             border-radius: 4px;
@@ -367,6 +225,7 @@
             .about-bio-layout {
                 flex-direction: column;
                 margin-bottom: 0;
+                gap: 18px;
             }
 
             .profile-image {
@@ -374,6 +233,7 @@
                 margin-bottom: 20px;
                 text-align: left;
                 align-items: flex-start;
+                min-width: 0;
             }
 
             .bio-text {
@@ -386,24 +246,16 @@
 <body>
     <div class="container">
 
-        <div class="nav">
-            <a href="#experience">experience</a>
-            <a href="#projects">projects</a>
-            <a href="#events">events</a>
-            <button class="theme-toggle" onclick="toggleTheme()">◐</button>
-        </div>
-
         <div class="section" id="about">
-            <h2>About</h2>
+            <h2>About 👋</h2>
             <div class="about-bio-layout">
                 <div class="bio-text">
-                    <p>Hi, I'm a Fellow at the Gates Foundation working on AI x Health product strategies. My
-                        day includes research and development in human-agentic systems, formal verification, and AI governance.
+                    <p>Hi, I'm a Fellow at the Gates Foundation working on AI x Health product strategies. My focus is on
+                        frontier applications, AI safety, and human-agentic design.
                     </p>
                     <br>
-                    <p>I'm based in NYC and received my Bachelor's degree in Computer Science from New York University.
-                        I
-                        also have a background in software engineering. Feel free to connect with me on <a
+                    <p>I'm based in NYC and completed my BA in Computer Science from New York University.
+                        Feel free to connect with me on <a
                             href="https://www.linkedin.com/in/jackyang25/" style="text-decoration: none;">LinkedIn</a>.
                     </p>
                 </div>
@@ -419,104 +271,48 @@
             <div class="project">
                 <h3><a href="https://www.gatesfoundation.org/ideas/articles/artificial-intelligence-ai-development-principles"
                         style="text-decoration: underline; color: inherit;">AI Fellow @ Gates Foundation</a></h3>
-                <p> Selected as one of five Gates Fellows (5/4,000+) to pursue research and development of AI platforms
-                    for LMICs. </p>
             </div>
 
             <div class="project">
                 <h3><a href="https://www.kuralabs.org" style="text-decoration: underline; color: inherit;">AI Fellow @
                         Google x Kura Labs</a></h3>
-                <p>Selected for intensive agentic engineering program focused on building human-agentic enterprise
-                    applications.</p>
             </div>
 
             <div class="project">
                 <h3><a href="https://www.iac.com" style="text-decoration: underline; color: inherit;">IAC Fellow @ IAC
-                        Corporation</a></h3>
-                <p>Selected for an immersive program designed to empower the next generation of leaders, creators,
-                    innovators, and disruptors.</p>
+                        Inc. </a></h3>
             </div>
-
-            <!-- <div class="project">
-                <h3><a href="https://" style="text-decoration: underline; color: inherit;">Mentee @ SEO
-                        Career, Protégé</a></h3>
-                <p>Selected for career accelerator program providing close mentorship connection from leaders at
-                    JPMorgan and U.S. Army.</p>
-            </div> -->
 
             <div class="project">
                 <h3><a href="http://localhost:3000" style="text-decoration: underline; color: inherit;">Software
                         Engineering Intern @ Pulp</a></h3>
-                <p>Developed applications for startup focused on rhetorical analysis, the building
-                    block for marketing and AI intelligence.</p>
             </div>
 
             <div class="project">
                 <h3><a href="https://www.angi.com" style="text-decoration: underline; color: inherit;">Software
                         Engineering Intern
                         @ Angi</a></h3>
-                <p>Developed backend for internal CMS tools for managing landing page content within the home services
-                    taxonomy.</p>
-            </div>
-
-
-            <div class="project">
-                <h3><a href="https://engineering.nyu.edu/research-innovation/labs-centers/flexible-ai-enabled-mechatronic-systems-lab"
-                        style="text-decoration: underline; color: inherit;">Software Engineer @ Flexible AI-Enabled
-                        Mechatronic Systems Lab, NYU Tandon School of Engineering</a></h3>
-                <p>Developed low-latency motion control algorithms and computer vision models for 6-DoF robotic systems.
-                </p>
-            </div>
-
-            <div class="project">
-                <h3><a href="https://www.korhankocak.com" style="text-decoration: underline; color: inherit;">Research
-                        Assistant @ Social Science Division, New York University Abu Dhabi (Prof. Korhan Koçak)</a></h3>
-                <p>Conducted experiments on long short-term memory (LSTM) neural networks for sociopolitical predictive
-                    modeling.</p>
             </div>
 
             <div class="project">
                 <h3><a href="https://people.inc" style="text-decoration: underline; color: inherit;">Software
                         Engineering Intern @
                         People Inc.</a></h3>
-                <p>Improved user experience for high-traffic brands through contributions to product engineering and
-                    machine learning R&D.</p>
-            </div>
-        </div>
-
-        <div class="section" id="projects">
-            <h2>Projects</h2>
-
-            <div class="project">
-                <h3><a href="https://github.com/jackyang25/distributed-agents-system-with-mcp-integration">Agentic
-                        System with Distributed MCP Servers</a></h3>
-                <p>Built a multi-agent system for homebuying assistance using LangGraph orchestrator and MCP servers,
-                    featuring specialized agents for budgeting, program matching, and neighborhood discovery.</p>
             </div>
 
             <div class="project">
-                <h3><a href="https://github.com/jackyang25/natural-langauge-processing/tree/main/llm-data-compression">Corpus
-                        Pruning for LLM Fine-Tuning Process</a></h3>
-                <p>Developed pruning algorithms using k-means clustering and embedding-based scoring to reduce corpus
-                    size while maintaining semantic integrity, then fine-tuned open-source models for improved
-                    efficiency.</p>
+                <h3><a href="https://engineering.nyu.edu/research-innovation/labs-centers/flexible-ai-enabled-mechatronic-systems-lab"
+                        style="text-decoration: underline; color: inherit;">Engineer @ Flexible AI-Enabled
+                        Mechatronic Systems Lab, NYU Tandon (Prof. Rui Li)</a></h3>
             </div>
-        </div>
 
-        <div class="section" id="events">
-            <h2>Past Events</h2>
-            <ul>
-                <li>January 28-30, 2026: Zitnik Lab Partner Workshop at Harvard Medical School</li>
-                <li>November 7, 2025: Harvard x MIT Innovation Fund Panel Pitch</li>
-                <li>September 13-26, 2025: Google Enterprise Agent Hackathon at Kura Labs</li>
-                <li>Summer 2023, 2024: Philanthropy Pitches at IAC Corporation</li>
-                <li>Fall 2023: Study Abroad at New York University Abu Dhabi</li>
-                <li>February 18-19, 2023: HackNYU Hackathon at NYU Tandon School of Engineering</li>
-            </ul>
+            <div class="project">
+                <h3><a href="https://www.korhankocak.com" style="text-decoration: underline; color: inherit;">Research
+                        Assistant @ Social Science Division, NYU Abu Dhabi (Prof. Korhan Koçak)</a></h3>
+            </div>
         </div>
 
         <div class="footer">
-            <p>last updated: 10/5/2025</p>
             <div style="margin-top: 10px;">
                 <a href="https://github.com/jackyang25" title="GitHub"
                     style="margin-right: 15px; text-decoration: none;">
@@ -542,45 +338,6 @@
         </div>
     </div>
 
-    <script>
-        // Theme toggle functionality
-        function toggleTheme() {
-            const body = document.body;
-            const toggleButton = document.querySelector('.theme-toggle');
-
-            body.classList.toggle('dark-mode');
-
-            // Update button text and icon
-            if (body.classList.contains('dark-mode')) {
-                toggleButton.textContent = '◑';
-                toggleButton.classList.add('active');
-            } else {
-                toggleButton.textContent = '◐';
-                toggleButton.classList.remove('active');
-            }
-
-            // Save preference to localStorage
-            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-        }
-
-        // Load saved theme on page load
-        function loadTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const toggleButton = document.querySelector('.theme-toggle');
-
-            if (savedTheme === 'light') {
-                toggleButton.textContent = '◐';
-                toggleButton.classList.remove('active');
-            } else {
-                document.body.classList.add('dark-mode');
-                toggleButton.textContent = '◑';
-                toggleButton.classList.add('active');
-            }
-        }
-
-        // Load theme when page loads
-        loadTheme();
-    </script>
 </body>
 
 </html>
